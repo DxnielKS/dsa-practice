@@ -76,11 +76,22 @@ def node_distances(nodes_from, nodes_to, g_nodes, g_edges):
     return distances[1:]
 
 
-# Test case
+# Test cases
 nodes_from = [1, 2, 1, 3, 1, 2]
 nodes_to = [2, 3, 3, 5, 4, 6]
 g_nodes = 6
 g_edges = 6
+
+distances_from_cycle = node_distances(
+    nodes_from=nodes_from, nodes_to=nodes_to, g_nodes=g_nodes, g_edges=g_edges
+)
+
+print(f"Distances from cycle: {distances_from_cycle}")
+
+nodes_from = [1, 2, 1, 3, 3, 1, 2]
+nodes_to = [2, 3, 4, 4, 5, 7, 6]
+g_nodes = 7
+g_edges = 7
 
 distances_from_cycle = node_distances(
     nodes_from=nodes_from, nodes_to=nodes_to, g_nodes=g_nodes, g_edges=g_edges
