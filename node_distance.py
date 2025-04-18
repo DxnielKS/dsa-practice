@@ -56,13 +56,15 @@ def node_distances(nodes_from, nodes_to, g_nodes, g_edges):
         distances[node] = 0
 
     # use BFS to find the shortest distance from each node to the cycle node
-    for i in range(g_nodes):
-        if distances[i] != -1:
+    for i in range(1,g_nodes+1):
+        print(f"Performing BFS on node {i}")
+        if distances[i] == -1:
             continue
 
         queue = collections.deque([i])
 
         while queue:
+            print(f"State of queue: {queue}")
             u = queue.popleft()
             for v in graph[u]:
                 if distances[v] != -1:
@@ -75,8 +77,8 @@ def node_distances(nodes_from, nodes_to, g_nodes, g_edges):
 
 
 # Test case
-nodes_from = [1, 2, 3, 3, 1, 2]
-nodes_to = [2, 3, 1, 4, 5, 6]
+nodes_from = [1, 2, 1, 3, 1, 2]
+nodes_to = [2, 3, 3, 5, 4, 6]
 g_nodes = 6
 g_edges = 6
 
